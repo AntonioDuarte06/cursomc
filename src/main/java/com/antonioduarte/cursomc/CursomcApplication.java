@@ -1,5 +1,6 @@
 package com.antonioduarte.cursomc;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.antonioduarte.cursomc.domain.Cidade;
 import com.antonioduarte.cursomc.domain.Cliente;
 import com.antonioduarte.cursomc.domain.Endereco;
 import com.antonioduarte.cursomc.domain.Estado;
+import com.antonioduarte.cursomc.domain.Pedido;
 import com.antonioduarte.cursomc.domain.Produto;
 import com.antonioduarte.cursomc.domain.enuns.TipoCliente;
 import com.antonioduarte.cursomc.repositories.CategoriaRepository;
@@ -83,6 +85,11 @@ public class CursomcApplication implements CommandLineRunner {
 		cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
 		cliRep.saveAll(Arrays.asList(cli1));
 		endRep.saveAll(Arrays.asList(e1, e2));
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		
+		Pedido ped1 = new Pedido(null, sdf.parse("30/09/2017 10:32"), cli1, e1);
+		Pedido ped2 = new Pedido(null, sdf.parse("10/10/2017 10:35"), cli1, e2);
 		
 		
 		
